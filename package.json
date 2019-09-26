@@ -2,7 +2,7 @@
   "name": "react-gerador-curriculo",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://carloshximenes.github.io/gerar-curriculo",
+  "homepage": "http://carloshximenes.github.io/react-gerador-curriculo",
   "dependencies": {
     "@react-pdf/renderer": "^1.6.6",
     "bootstrap": "^4.3.1",
