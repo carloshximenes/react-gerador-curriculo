@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "43b222758c64f9aa4f0b8f29bd2bc30d",
+    "revision": "c2b26acdd824a2846e8c84a94b9ded45",
     "url": "/gerar-curriculo/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/gerar-curriculo/static/css/2.0624914a.chunk.css"
   },
   {
-    "revision": "e50eb6cae3fcc15f7506",
+    "revision": "496dbcfc1a88b263d1fa",
     "url": "/gerar-curriculo/static/css/main.faf4fef6.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/gerar-curriculo/static/js/2.3c85a63c.chunk.js"
   },
   {
-    "revision": "e50eb6cae3fcc15f7506",
-    "url": "/gerar-curriculo/static/js/main.dcea81c2.chunk.js"
+    "revision": "496dbcfc1a88b263d1fa",
+    "url": "/gerar-curriculo/static/js/main.da575401.chunk.js"
   },
   {
     "revision": "01b22f8f7c0a51a17f35",
