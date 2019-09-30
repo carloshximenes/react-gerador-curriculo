@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import PdfDocument from '../PdfDocument/PdfDocument';
 
-export default function GerarCurriculo(props) {
+function GerarCurriculo(props) {
 
     const style = { marginBottom: '1%' };
     const styleButton = {
@@ -34,3 +34,5 @@ export default function GerarCurriculo(props) {
         </Container>
     </>);
 }
+
+export default React.memo(GerarCurriculo);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Header from '../components/Header/Header';
 import PersonalInfos from '../components/PersonalInfos/PersonalInfos';
@@ -9,6 +9,8 @@ import Qualificacoes from '../components/Qualificacoes/Qualificacoes';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import GerarCurriculo from '../components/GerarCurriculo/GerarCurriculo';
+import GetEstadoCivil from '../utils/EstadoCivil';
+import GetEstadoCidade from '../utils/EstadoCidade';
 
 const title = 'Gerador de Curriculo Online';
 const theme = 'dark';
@@ -16,47 +18,86 @@ const styleAddNewValues = { alignItems: 'center' };
 const classAddNewValues = ['d-flex justify-content-between'];
 const classButton = ['btn-secondary'];
 
+const listaEstadoCidade = GetEstadoCidade();
+const listaEstadoCivil = GetEstadoCivil();
+const listaEstados = listaEstadoCidade.estados.map((estado) => { return estado.estado });
+
 function App() {
   const [dadosCurriculo, setDadosCurriculo] = useState({
     nome: '',
     contato: '',
     email: '',
-    nacionalidade: '',
+    nacionalidade: 'brasileiro(a)',
     estadoCivil: '',
     idade: '',
     endereco: '',
     cidade: '',
     estado: '',
     objetivo: '',
-    formacao: [{ id: 0, curso: '', instituicao: '', anoConclusao: '' }],
-    experiencia: [{ id: 0, empresa: '', cargo: '', anoEntrada: '', anoSaida: '', atividades: '' }],
-    qualificacao: [{ id: 0, qualificacao: '' }]
+    formacao: [{ curso: '', instituicao: '', anoConclusao: '' }],
+    experiencia: [{ empresa: '', cargo: '', anoEntrada: '', anoSaida: '', atividades: '' }],
+    qualificacao: [{ qualificacao: '' }]
   });
 
+  const [listasSelecao, setListasSelecao] = useState({
+    estadoCivil: listaEstadoCivil,
+    estado: listaEstados,
+    cidade: []
+  });
+
+  useEffect(() => {
+    if (dadosCurriculo.estado !== '') {
+      const estadoSelecionado = listaEstadoCidade.estados.find((estado) => estado.estado === dadosCurriculo.estado);
+      let listaCidades = listaEstadoCidade.cidades.filter((cidade) => cidade.estadoId === estadoSelecionado.id).map((cidade) => cidade.cidade) || [];
+      setListasSelecao(prevState => ({ ...prevState, cidade: listaCidades }));
+    }
+  }, [dadosCurriculo.estado]);
+
+  //Adicionar novas linhas
   const addFormacao = () => {
     let actualFormacao = [...dadosCurriculo.formacao];
-    const lastValue = actualFormacao.length;
-    const newLine = { id: lastValue, curso: '', instituicao: '', anoConclusao: '' };
+    const newLine = { curso: '', instituicao: '', anoConclusao: '' };
     actualFormacao.push(newLine);
     setDadosCurriculo(prevState => ({ ...prevState, formacao: actualFormacao }));
   };
 
   const addQualificacao = () => {
     let actualQualificacao = [...dadosCurriculo.qualificacao];
-    const lastValue = actualQualificacao.length;
-    const newLine = { id: lastValue, qualificacao: '' };
+    const newLine = { qualificacao: '' };
     actualQualificacao.push(newLine);
     setDadosCurriculo(prevState => ({ ...prevState, qualificacao: actualQualificacao }));
   };
 
   const addExperiencia = () => {
     let actualExperiencia = [...dadosCurriculo.experiencia];
-    const lastValue = actualExperiencia.length;
-    const newLine = { id: lastValue, empresa: '', cargo: '', anoEntrada: '', anoSaida: '', atividades: '' };
+    const newLine = { empresa: '', cargo: '', anoEntrada: '', anoSaida: '', atividades: '' };
     actualExperiencia.push(newLine);
     setDadosCurriculo(prevState => ({ ...prevState, experiencia: actualExperiencia }));
   };
 
+  //Remover linhas existentes
+  const deleteFormacao = (event) => {
+    let actualFormacao = [...dadosCurriculo.formacao];
+    const index = event.target.dataset.index;
+    actualFormacao.splice(index, 1);
+    setDadosCurriculo(prevState => ({ ...prevState, formacao: actualFormacao }));
+  }
+
+  const deleteQualificacao = (event) => {
+    let actualQualificacao = [...dadosCurriculo.qualificacao];
+    const index = event.target.dataset.index;
+    actualQualificacao.splice(index, 1);
+    setDadosCurriculo(prevState => ({ ...prevState, qualificacao: actualQualificacao }));
+  }
+
+  const deleteExperiencia = (event) => {
+    let actualExperiencia = [...dadosCurriculo.experiencia];
+    const index = event.target.dataset.index;
+    actualExperiencia.splice(index, 1);
+    setDadosCurriculo(prevState => ({ ...prevState, experiencia: actualExperiencia }));
+  }
+
+  //Eventos Handler
   const handleChangeExperienciaProfissional = (event) => {
     const { name, value } = event.target;
     const index = event.target.dataset.index;
@@ -90,25 +131,25 @@ function App() {
     <div className="App">
       <Header theme={theme}>{title}</Header>
       <Form>
-        <PersonalInfos data={dadosCurriculo} changed={(event) => handleChangeDadosCurriculo(event)}>
+        <PersonalInfos listas={listasSelecao} data={dadosCurriculo} changed={(event) => handleChangeDadosCurriculo(event)}>
           Dados Pessoais
       </PersonalInfos>
         <Objectives data={dadosCurriculo} changed={(event) => handleChangeDadosCurriculo(event)}>
           Objetivo
       </Objectives>
-        <FormacaoAcademica data={dadosCurriculo.formacao} changed={(event) => handleChangeFormacaoAcademica(event)}>
+        <FormacaoAcademica data={dadosCurriculo.formacao} changed={(event) => handleChangeFormacaoAcademica(event)} deleted={(event) => deleteFormacao(event)}>
           <div className={classAddNewValues} style={styleAddNewValues}>
             Formação Acadêmica
             <Button className={classButton} onClick={addFormacao}>+</Button>
           </div>
         </FormacaoAcademica>
-        <ExperienciaProfissional data={dadosCurriculo.experiencia} changed={(event) => handleChangeExperienciaProfissional(event)}>
+        <ExperienciaProfissional data={dadosCurriculo.experiencia} changed={(event) => handleChangeExperienciaProfissional(event)} deleted={(event) => deleteExperiencia(event)}>
           <div className={classAddNewValues} style={styleAddNewValues}>
             Experiência Profissional
             <Button className={classButton} onClick={addExperiencia}>+</Button>
           </div>
         </ExperienciaProfissional>
-        <Qualificacoes data={dadosCurriculo.qualificacao} changed={(event) => handleChangeQualificacoes(event)}>
+        <Qualificacoes data={dadosCurriculo.qualificacao} changed={(event) => handleChangeQualificacoes(event)} deleted={(event) => deleteQualificacao(event)}>
           <div className={classAddNewValues} style={styleAddNewValues}>
             Qualificações e Atividades Complementares
             <Button className={classButton} onClick={addQualificacao}>+</Button>

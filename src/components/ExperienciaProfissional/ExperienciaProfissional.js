@@ -14,7 +14,7 @@ export default function ExperienciaProfissional(props) {
                 <Card.Body>
                     {props.data.map((experiencia, index) => {
                         return (
-                            <Experiencia data={experiencia.data} key={index} index={index} changed={props.changed} />
+                            <Experiencia data={experiencia.data} key={index} index={index} changed={props.changed} deleted={props.deleted}/>
                         )
                     })}
                 </Card.Body>
