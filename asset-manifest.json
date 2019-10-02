@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/react-gerador-curriculo/static/css/main.faf4fef6.chunk.css",
-    "main.js": "/react-gerador-curriculo/static/js/main.fe608259.chunk.js",
-    "main.js.map": "/react-gerador-curriculo/static/js/main.fe608259.chunk.js.map",
-    "runtime-main.js": "/react-gerador-curriculo/static/js/runtime-main.062c581a.js",
-    "runtime-main.js.map": "/react-gerador-curriculo/static/js/runtime-main.062c581a.js.map",
+    "main.css": "/react-gerador-curriculo/static/css/main.8c0f0cb4.chunk.css",
+    "main.js": "/react-gerador-curriculo/static/js/main.30eeee5a.chunk.js",
+    "main.js.map": "/react-gerador-curriculo/static/js/main.30eeee5a.chunk.js.map",
+    "runtime-main.js": "/react-gerador-curriculo/static/js/runtime-main.0c209a0a.js",
+    "runtime-main.js.map": "/react-gerador-curriculo/static/js/runtime-main.0c209a0a.js.map",
     "static/css/2.0624914a.chunk.css": "/react-gerador-curriculo/static/css/2.0624914a.chunk.css",
-    "static/js/2.777625d9.chunk.js": "/react-gerador-curriculo/static/js/2.777625d9.chunk.js",
-    "static/js/2.777625d9.chunk.js.map": "/react-gerador-curriculo/static/js/2.777625d9.chunk.js.map",
+    "static/js/2.0648a1bf.chunk.js": "/react-gerador-curriculo/static/js/2.0648a1bf.chunk.js",
+    "static/js/2.0648a1bf.chunk.js.map": "/react-gerador-curriculo/static/js/2.0648a1bf.chunk.js.map",
     "index.html": "/react-gerador-curriculo/index.html",
-    "precache-manifest.97438a2f2e0e55848ae14aeadcddf3c4.js": "/react-gerador-curriculo/precache-manifest.97438a2f2e0e55848ae14aeadcddf3c4.js",
+    "precache-manifest.342395d0939f6ea89c2549849a948afd.js": "/react-gerador-curriculo/precache-manifest.342395d0939f6ea89c2549849a948afd.js",
     "service-worker.js": "/react-gerador-curriculo/service-worker.js",
     "static/css/2.0624914a.chunk.css.map": "/react-gerador-curriculo/static/css/2.0624914a.chunk.css.map",
-    "static/css/main.faf4fef6.chunk.css.map": "/react-gerador-curriculo/static/css/main.faf4fef6.chunk.css.map"
+    "static/css/main.8c0f0cb4.chunk.css.map": "/react-gerador-curriculo/static/css/main.8c0f0cb4.chunk.css.map"
   }
 }
