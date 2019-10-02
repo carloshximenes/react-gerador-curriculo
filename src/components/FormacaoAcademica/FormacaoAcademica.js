@@ -14,7 +14,7 @@ export default function FormacaoAcademica(props) {
                 <Card.Body>
                     {props.data.map((formacao, index) => {
                         return (
-                            <Formacao data={formacao.data} key={index} index={index} changed={props.changed} deleted={props.deleted}/>
+                            <Formacao key={index} data={formacao} index={index} changed={props.changed} deleted={props.deleted} />
                         )
                     })}
                 </Card.Body>

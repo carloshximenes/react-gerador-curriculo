@@ -7,8 +7,8 @@ export default function FormInputText(props) {
     return (<>
         <Form.Group>
             {(props.children !== null) ? <Form.Label>{props.children}</Form.Label> : null}
-            <InputMask className={classes} mask={props.mask} data-index={props.index} name={props.name} type={props.type}
-                value={props.value} onChange={props.changed} placeholder={props.placeholder}>
+            <InputMask className={classes} mask={props.mask} name={props.name} type={props.type}
+                value={props.value} onChange={props.changed} placeholder={props.placeholder} data-index={props.index}>
             </InputMask>
         </Form.Group>
     </>);

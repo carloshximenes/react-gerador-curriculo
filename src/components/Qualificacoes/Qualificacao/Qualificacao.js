@@ -12,14 +12,16 @@ const style = {
     marginBottom: '10px'
 };
 
-export default function Qualificacao(props) {
+export default function Qualificacao({ data, index, deleted, changed }) {
 
+    const { qualificacao } = data;
+    
     return (<>
         <Card style={style}>
-            <RemoveOption index={props.index} deleted={props.deleted} />
+            <RemoveOption index={index} deleted={deleted} />
             <Form.Row style={{ marginTop: '-15px' }}>
                 <Col>
-                    <FormInputText placeholder='ex: Curso de ingles, Curso de atendimento ao público' index={props.index} name='qualificacao' type='text' value={props.qualificacao} changed={props.changed}>
+                    <FormInputText placeholder='ex: Curso de ingles, Curso de atendimento ao público' index={index} name='qualificacao' type='text' value={qualificacao} changed={changed}>
                         Qualificação ou Atividade Complementar
                     </FormInputText>
                 </Col>

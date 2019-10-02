@@ -76,25 +76,22 @@ function App() {
   };
 
   //Remover linhas existentes
-  const deleteFormacao = (event) => {
-    let actualFormacao = [...dadosCurriculo.formacao];
-    const index = event.target.dataset.index;
-    actualFormacao.splice(index, 1);
-    setDadosCurriculo(prevState => ({ ...prevState, formacao: actualFormacao }));
+  const deleteFormacao = (selectedIndex) => {
+    const actualFormacao = [...dadosCurriculo.formacao];
+    const newFormacao = actualFormacao.filter((_, index) => index !== selectedIndex);
+    setDadosCurriculo(prevState => ({ ...prevState, formacao: newFormacao }));
   }
 
-  const deleteQualificacao = (event) => {
+  const deleteQualificacao = (selectedIndex) => {
     let actualQualificacao = [...dadosCurriculo.qualificacao];
-    const index = event.target.dataset.index;
-    actualQualificacao.splice(index, 1);
-    setDadosCurriculo(prevState => ({ ...prevState, qualificacao: actualQualificacao }));
+    const newFormacao = actualQualificacao.filter((_, index) => index !== selectedIndex);
+    setDadosCurriculo(prevState => ({ ...prevState, qualificacao: newFormacao }));
   }
 
-  const deleteExperiencia = (event) => {
+  const deleteExperiencia = (selectedIndex) => {
     let actualExperiencia = [...dadosCurriculo.experiencia];
-    const index = event.target.dataset.index;
-    actualExperiencia.splice(index, 1);
-    setDadosCurriculo(prevState => ({ ...prevState, experiencia: actualExperiencia }));
+    const newFormacao = actualExperiencia.filter((_, index) => index !== selectedIndex);
+    setDadosCurriculo(prevState => ({ ...prevState, experiencia: newFormacao }));
   }
 
   //Eventos Handler
@@ -137,19 +134,19 @@ function App() {
         <Objectives data={dadosCurriculo} changed={(event) => handleChangeDadosCurriculo(event)}>
           Objetivo
       </Objectives>
-        <FormacaoAcademica data={dadosCurriculo.formacao} changed={(event) => handleChangeFormacaoAcademica(event)} deleted={(event) => deleteFormacao(event)}>
+        <FormacaoAcademica data={dadosCurriculo.formacao} changed={(event) => handleChangeFormacaoAcademica(event)} deleted={deleteFormacao}>
           <div className={classAddNewValues} style={styleAddNewValues}>
             Formação Acadêmica
             <Button className={classButton} onClick={addFormacao}>+</Button>
           </div>
         </FormacaoAcademica>
-        <ExperienciaProfissional data={dadosCurriculo.experiencia} changed={(event) => handleChangeExperienciaProfissional(event)} deleted={(event) => deleteExperiencia(event)}>
+        <ExperienciaProfissional data={dadosCurriculo.experiencia} changed={(event) => handleChangeExperienciaProfissional(event)} deleted={deleteExperiencia}>
           <div className={classAddNewValues} style={styleAddNewValues}>
             Experiência Profissional
             <Button className={classButton} onClick={addExperiencia}>+</Button>
           </div>
         </ExperienciaProfissional>
-        <Qualificacoes data={dadosCurriculo.qualificacao} changed={(event) => handleChangeQualificacoes(event)} deleted={(event) => deleteQualificacao(event)}>
+        <Qualificacoes data={dadosCurriculo.qualificacao} changed={(event) => handleChangeQualificacoes(event)} deleted={deleteQualificacao}>
           <div className={classAddNewValues} style={styleAddNewValues}>
             Qualificações e Atividades Complementares
             <Button className={classButton} onClick={addQualificacao}>+</Button>

@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 import FormInputText from '../../FormInputText/FormInputText';
 import RemoveOption from '../../RemoveOption/RemoveOption';
 
-export default function Formacao(props) {
+export default function Formacao({ data, index, deleted, changed }) {
 
     const style = {
         paddingLeft: '10px',
@@ -14,15 +14,29 @@ export default function Formacao(props) {
         marginBottom: '10px'
     };
 
+    const { curso, instituicao, anoConclusao } = data;
+
     return (<>
         <Card style={style}>
-            <RemoveOption index={props.index} deleted={props.deleted} />
+            <RemoveOption index={index} deleted={deleted} />
             <Form.Row style={{ marginTop: '-15px' }} >
-                <Col><FormInputText placeholder='ex: Superior completo, Graduação em hotelaria' index={props.index} name='curso' type='text' value={props.curso} changed={props.changed}>Curso</FormInputText></Col>
+                <Col>
+                    <FormInputText index={index} placeholder='ex: Superior completo, Graduação em hotelaria' name='curso' type='text' value={curso} changed={changed}>
+                        Curso
+                    </FormInputText>
+                </Col>
             </Form.Row>
             <Form.Row>
-                <Col><FormInputText placeholder='ex: Colégio Laços, Faculdade Santa Maria' index={props.index} name='instituicao' type='text' value={props.instituicao} changed={props.changed}>Instituição</FormInputText></Col>
-                <Col className='col-3'><FormInputText placeholder='ex: 2012' index={props.index} name='anoConclusao' type='number' value={props.anoConclusao} changed={props.changed}>Conclusão</FormInputText></Col>
+                <Col>
+                    <FormInputText index={index} placeholder='ex: Colégio Laços, Faculdade Santa Maria' name='instituicao' type='text' value={instituicao} changed={changed}>
+                        Instituição
+                    </FormInputText>
+                </Col>
+                <Col className='col-3'>
+                    <FormInputText index={index} placeholder='ex: 2012' name='anoConclusao' type='number' value={anoConclusao} changed={changed}>
+                        Conclusão
+                        </FormInputText>
+                </Col>
             </Form.Row>
         </Card>
     </>);

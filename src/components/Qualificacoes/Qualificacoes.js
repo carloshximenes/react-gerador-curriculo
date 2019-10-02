@@ -14,7 +14,7 @@ export default function Qualificacoes(props) {
                 <Card.Body>
                     {props.data.map((qualificacao, index) => {
                         return (
-                            <Qualificacao data={qualificacao.data} key={index} index={index} changed={props.changed} deleted={props.deleted}/>
+                            <Qualificacao data={qualificacao} key={index} index={index} changed={props.changed} deleted={props.deleted}/>
                         )
                     })}
                 </Card.Body>

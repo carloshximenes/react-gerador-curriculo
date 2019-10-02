@@ -8,11 +8,12 @@ const styleText = {
     textDecorationLine: 'underline',
     color: 'blue',
     paddingTop: '5px',
-    zIndex: '99'
+    zIndex: '99',
+    width: '40px'
 }
 
-const classes = ['pull-right', 'clickable'];
+const classes = ['d-flex flex-row-reverse clickable'];
 
-export default function RemoveOption(props) {
-    return <><a className={classes} style={styleText} data-index={props.index} onClick={props.deleted}>Excluir</a></>;
+export default function RemoveOption({ deleted, index }) {
+    return <div className={classes} ><span style={styleText} onClick={() => deleted(index)}>Excluir</span></div>;
 }
