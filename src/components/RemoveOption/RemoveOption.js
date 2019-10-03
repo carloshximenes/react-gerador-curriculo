@@ -9,11 +9,18 @@ const styleText = {
     color: 'blue',
     paddingTop: '5px',
     zIndex: '99',
-    width: '40px'
+    width: '40px',
+    marginBottom: '-15px'
 }
 
 const classes = ['d-flex flex-row-reverse clickable'];
 
 export default function RemoveOption({ deleted, index }) {
-    return <div className={classes} ><span style={styleText} onClick={() => deleted(index)}>Excluir</span></div>;
+    return (
+        <div className={classes} >
+            <span style={styleText} onClick={() => deleted(index)}>
+                Excluir
+        </span>
+        </div>
+    );
 }

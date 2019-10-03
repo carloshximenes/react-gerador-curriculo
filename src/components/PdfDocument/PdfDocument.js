@@ -57,31 +57,32 @@ export default function PdfDocument(props) {
           <Text style={styles.header}>Formação Acadêmica</Text>
           {
             formacao.map((linhaFormacao, index) => {
-              return (<View key={index}>
+              return (linhaFormacao.curso !== '') ? (<View key={index}>
                 <Text style={styles.item}>{linhaFormacao.curso}</Text>
                 <Text style={styles.nextItem}>{linhaFormacao.instituicao} / {linhaFormacao.anoConclusao}</Text>
               </View>
-              )
+              ) : null;
             })
           }
           <Text style={styles.header}>Experiência Profissional</Text>
           {
             experiencia.map((linhaExperiencia, index) => {
-              return (<View key={index}>
+
+              return (linhaExperiencia.cargo !== '') ? (<View key={index}>
                 <Text style={styles.item}>{linhaExperiencia.cargo}</Text>
                 <Text>{linhaExperiencia.empresa} [{linhaExperiencia.anoEntrada} - {linhaExperiencia.anoSaida}]</Text>
                 <Text style={styles.nextItem}>Principais Atividades: {linhaExperiencia.atividades}</Text>
               </View>
-              )
+              ) : null;
             })
           }
           <Text style={styles.header}>Qualificações e Atividades Complementares</Text>
           {
             qualificacao.map((linhaQualificacao, index) => {
-              return (<View key={index}>
+              return (linhaQualificacao.qualificacao !== '') ?  (<View key={index}>
                 <Text>{linhaQualificacao.qualificacao}</Text>
               </View>
-              )
+              ) : null;
             })
           }
         </View>

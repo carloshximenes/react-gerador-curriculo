@@ -19,7 +19,7 @@ export default function Formacao({ data, index, deleted, changed }) {
     return (<>
         <Card style={style}>
             <RemoveOption index={index} deleted={deleted} />
-            <Form.Row style={{ marginTop: '-15px' }} >
+            <Form.Row>
                 <Col>
                     <FormInputText index={index} placeholder='ex: Superior completo, Graduação em hotelaria' name='curso' type='text' value={curso} changed={changed}>
                         Curso
@@ -34,7 +34,7 @@ export default function Formacao({ data, index, deleted, changed }) {
                 </Col>
                 <Col className='col-3'>
                     <FormInputText index={index} placeholder='ex: 2012' name='anoConclusao' type='number' value={anoConclusao} changed={changed}>
-                        Conclusão
+                        Conclusão (ou previsão)
                         </FormInputText>
                 </Col>
             </Form.Row>

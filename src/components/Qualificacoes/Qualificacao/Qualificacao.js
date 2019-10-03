@@ -19,7 +19,7 @@ export default function Qualificacao({ data, index, deleted, changed }) {
     return (<>
         <Card style={style}>
             <RemoveOption index={index} deleted={deleted} />
-            <Form.Row style={{ marginTop: '-15px' }}>
+            <Form.Row>
                 <Col>
                     <FormInputText placeholder='ex: Curso de ingles, Curso de atendimento ao público' index={index} name='qualificacao' type='text' value={qualificacao} changed={changed}>
                         Qualificação ou Atividade Complementar

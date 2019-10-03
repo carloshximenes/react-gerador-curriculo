@@ -35,7 +35,7 @@ function App() {
     estado: '',
     objetivo: '',
     formacao: [{ curso: '', instituicao: '', anoConclusao: '' }],
-    experiencia: [{ empresa: '', cargo: '', anoEntrada: '', anoSaida: '', atividades: '' }],
+    experiencia: [{ empresa: '', cargo: '', anoEntrada: '', anoSaida: '', atividades: '', empregoAtual: false }],
     qualificacao: [{ qualificacao: '' }]
   });
 
@@ -70,7 +70,7 @@ function App() {
 
   const addExperiencia = () => {
     let actualExperiencia = [...dadosCurriculo.experiencia];
-    const newLine = { empresa: '', cargo: '', anoEntrada: '', anoSaida: '', atividades: '' };
+    const newLine = { empresa: '', cargo: '', anoEntrada: '', anoSaida: '', atividades: '', empregoAtual: false };
     actualExperiencia.push(newLine);
     setDadosCurriculo(prevState => ({ ...prevState, experiencia: actualExperiencia }));
   };
@@ -96,10 +96,15 @@ function App() {
 
   //Eventos Handler
   const handleChangeExperienciaProfissional = (event) => {
-    const { name, value } = event.target;
+    const { name, type, checked, value } = event.target;
     const index = event.target.dataset.index;
     let newExperienciaProfissional = [...dadosCurriculo.experiencia];
-    newExperienciaProfissional[index] = { ...newExperienciaProfissional[index], [name]: value };
+    const newValue = (type === 'checkbox') ? checked : value;
+    newExperienciaProfissional[index] = { ...newExperienciaProfissional[index], [name]: newValue };
+    if (type === 'checkbox') {
+      const newAnoSaida = (checked) ? 'Até o momento' : '';
+      newExperienciaProfissional[index] = { ...newExperienciaProfissional[index], anoSaida: newAnoSaida };
+    }
     setDadosCurriculo(prevState => ({ ...prevState, experiencia: newExperienciaProfissional }));
   }
 
