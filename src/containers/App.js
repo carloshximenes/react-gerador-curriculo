@@ -99,7 +99,7 @@ function App() {
     const { name, type, checked, value } = event.target;
     const index = event.target.dataset.index;
     let newExperienciaProfissional = [...dadosCurriculo.experiencia];
-    const newValue = (type === 'checkbox') ? checked : value;
+    const newValue = (type === 'checkbox') ? checked : (type === 'number') ? value.slice(0,4) : value;
     newExperienciaProfissional[index] = { ...newExperienciaProfissional[index], [name]: newValue };
     if (type === 'checkbox') {
       const newAnoSaida = (checked) ? 'Até o momento' : '';
@@ -109,24 +109,27 @@ function App() {
   }
 
   const handleChangeQualificacoes = (event) => {
-    const { name, value } = event.target;
+    const { name, value, type } = event.target;
     const index = event.target.dataset.index;
     let newQualificacoes = [...dadosCurriculo.qualificacao];
-    newQualificacoes[index] = { ...newQualificacoes[index], [name]: value };
+    const newValue = (type === 'number') ? value.slice(0,4) : value;
+    newQualificacoes[index] = { ...newQualificacoes[index], [name]: newValue };
     setDadosCurriculo(prevState => ({ ...prevState, qualificacao: newQualificacoes }));
   }
 
   const handleChangeFormacaoAcademica = (event) => {
-    const { name, value } = event.target;
+    const { name, value, type } = event.target;
     const index = event.target.dataset.index;
     let newFormacaoAcademica = [...dadosCurriculo.formacao];
-    newFormacaoAcademica[index] = { ...newFormacaoAcademica[index], [name]: value };
+    const newValue = (type === 'number') ? value.slice(0,4) : value;
+    newFormacaoAcademica[index] = { ...newFormacaoAcademica[index], [name]: newValue };
     setDadosCurriculo(prevState => ({ ...prevState, formacao: newFormacaoAcademica }));
   }
 
   const handleChangeDadosCurriculo = (event) => {
-    const { name, value } = event.target;
-    setDadosCurriculo(prevState => ({ ...prevState, [name]: value }));
+    const { name, value, type } = event.target;
+    const newValue = (type === 'number') ? value.slice(0,4) : value;
+    setDadosCurriculo(prevState => ({ ...prevState, [name]: newValue }));
   }
 
   return (
