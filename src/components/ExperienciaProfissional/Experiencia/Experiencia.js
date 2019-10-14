@@ -38,9 +38,9 @@ export default function Experiencia({ data, index, changed, deleted }) {
                     </FormInputText>
                 </Col>
             </Form.Row>
-            <FormInputText placeholder='ex: Atendimento ao público, Análise de documentos fiscais' name='atividades' type='text' value={atividades} index={index} changed={changed}>
+            <Form.Control style={{ marginBottom: '10px' }} as="textarea" placeholder='ex: Atendimento ao público, Análise de documentos fiscais' name='atividades' type='textarea' value={atividades} data-index={index} onChange={changed}>
                 Principais Atividades
-                </FormInputText>
+                </Form.Control>
         </Card>
     </>);
 }

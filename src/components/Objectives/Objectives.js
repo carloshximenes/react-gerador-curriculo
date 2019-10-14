@@ -1,7 +1,7 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
-import FormInputText from '../FormInputText/FormInputText';
+import Form from 'react-bootstrap/Form';
 
 export default function Objectives(props) {
 
@@ -12,10 +12,17 @@ export default function Objectives(props) {
             <Card>
                 <Card.Header>{props.children}</Card.Header>
                 <Card.Body>
-                    <FormInputText name='objetivo' type='text' value={props.data.objetivo} changed={props.changed}
-                        placeholder='ex: Assistente fiscal, Garçom, Engenheiro agrícola, Enfermeira'>
+                    <Form.Control
+                    style={{ marginBottom: '10px' }}
+                    as="textarea"
+                    placeholder='ex: Assistente fiscal, Garçom, Engenheiro agrícola, Enfermeira'
+                    name='objetivo'
+                    type='textarea'
+                    value={props.data.objetivo}
+                    data-index={props.index}
+                    onChange={props.changed}>
                         Objetivo
-                        </FormInputText>
+                </Form.Control>
                 </Card.Body>
             </Card>
         </Container>
