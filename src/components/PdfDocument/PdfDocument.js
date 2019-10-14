@@ -52,9 +52,9 @@ export default function PdfDocument(props) {
           <Text>{endereco} - {cidade}/{estado}</Text>
           <Text>Contato: {contato}</Text>
           <Text>E-mail: {email}</Text>
-          <Text style={styles.header}>Objetivo</Text>
+          {(objetivo.length > 0) ? <Text style={styles.header}>Objetivo</Text> : null}
           <Text>{objetivo}</Text>
-          <Text style={styles.header}>Formação Acadêmica</Text>
+          {(formacao.filter(linha => linha.curso !== '').length > 0) ? <Text style={styles.header}>Formação Acadêmica</Text> : null}
           {
             formacao.map((linhaFormacao, index) => {
               return (linhaFormacao.curso !== '') ? (<View key={index}>
@@ -64,7 +64,7 @@ export default function PdfDocument(props) {
               ) : null;
             })
           }
-          <Text style={styles.header}>Experiência Profissional</Text>
+          {(experiencia.filter(linha => linha.cargo !== '').length > 0) ? <Text style={styles.header}>Experiência Profissional</Text> : null}
           {
             experiencia.map((linhaExperiencia, index) => {
 
@@ -76,10 +76,10 @@ export default function PdfDocument(props) {
               ) : null;
             })
           }
-          <Text style={styles.header}>Qualificações e Atividades Complementares</Text>
+          {(qualificacao.filter(linha => linha.qualificacao !== '').length > 0) ? <Text style={styles.header}>Qualificações e Atividades Complementares</Text> : null}
           {
             qualificacao.map((linhaQualificacao, index) => {
-              return (linhaQualificacao.qualificacao !== '') ?  (<View key={index}>
+              return (linhaQualificacao.qualificacao !== '') ? (<View key={index}>
                 <Text>{linhaQualificacao.qualificacao}</Text>
               </View>
               ) : null;
